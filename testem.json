@@ -1,0 +1,10 @@
+{
+  "framework": "jasmine2",
+  "src_files": [
+    "src/jspm_packages/system.js",
+    "spec/base_url.js",
+    "src/config.js",
+    "spec/test_runner.js"
+  ]
+}
+

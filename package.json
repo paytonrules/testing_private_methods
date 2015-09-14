@@ -1,0 +1,31 @@
+{
+  "name": "es6_plain_setup",
+  "version": "1.0.0",
+  "description": "This is just a plain setup. It is meant to be forked.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "browser-sync start --files 'src/**/*.html,src/**/*.css,src/**/*.js' --server 'src'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "setup",
+    "testing"
+  ],
+  "author": "Eric Smith",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.9.3",
+    "jspm": "^0.16.2",
+    "testem": "^0.9.4"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.22",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.1.0"
+    }
+  }
+}
