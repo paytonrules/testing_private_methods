@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mortgage Calculator</title>
     <script src="/jspm_packages/system.js"></script>
     <script src="/base_url.js"></script>
     <script src="/config.js"></script>
@@ -12,8 +13,15 @@
     </script>
   </head>
   <body>
-    <h1>Testing</h1>
-    <h2>Testing 1 2</h2>
-    <h3>Testing 1 2 3</h3>
+    <div class="container">
+      <form action="#" class="mortgage-calculator">
+        <h2 class="heading">Calculate Your Mortgage!</h2>
+        <input type="text" name="homeCost" class="full-size" placeholder="Price" />
+        <input type="text" name="interest" class="full-size" placeholder="Interest Rate" />
+        <input type="text" name="term" class="full-size" placeholder="Term" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Calculate</button>
+      </form>
+      <p class="payment">Payment: <span id="result"></span></p>
+    </div>
   </body>
 </html>

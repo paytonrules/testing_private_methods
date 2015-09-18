@@ -1,5 +1,5 @@
 {
-  "name": "es6_plain_setup",
+  "name": "testing_private_methods",
   "version": "1.0.0",
   "description": "This is just a plain setup. It is meant to be forked.",
   "main": "index.js",
@@ -21,6 +21,10 @@
   "jspm": {
     "directories": {
       "baseURL": "src"
+    },
+    "dependencies": {
+      "bootstrap": "github:twbs/bootstrap@^3.3.5",
+      "css": "github:systemjs/plugin-css@^0.1.16"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",

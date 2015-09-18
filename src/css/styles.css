@@ -1,0 +1,22 @@
+.container {
+  max-width: 420px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.mortgage-calcluator .heading {
+  margin-bottom: 10px;
+}
+
+.mortgage-calculator .full-size {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.payment {
+  font-size: 16px;
+  font-weight: bold;
+}
+
