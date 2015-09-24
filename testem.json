@@ -5,6 +5,10 @@
     "spec/base_url.js",
     "src/config.js",
     "spec/test_runner.js"
+  ],
+  "watch_files": [
+    "src/**/*.js",
+    "spec/**/*.js"
   ]
 }
 
