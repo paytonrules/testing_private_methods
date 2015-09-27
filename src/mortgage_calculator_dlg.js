@@ -1,23 +1,22 @@
+import {MortgageCalculator} from 'mortgage_calculator';
+
 export class MortgageCalculatorDlg {
   static init($mortgageForm) {
+    let valAsNumber = function(sel) {
+      return Number($mortgageForm.find(sel).val());
+    };
+
     $mortgageForm.submit((evt) => {
-      var mortgage = $mortgageForm.find('input[name="homeCost"]').val();
-      var term = $mortgageForm.find('input[name="term"]').val() * 12;
-      var interest = $mortgageForm.find('input[name="interest"]').val() / 100 / 12;
+      var homeCost = valAsNumber('input[name="homeCost"]');
+      var term = valAsNumber('input[name="term"]') * 12;
+      var interest = valAsNumber('input[name="interest"]') / 100 / 12;
 
-      if (term == 0) {
-        $("#result").text(mortgage);
-      }
-      else if (interest == 0) {
-        $("#result").text(mortgage / term);
-      } else {
-        var interestPower = Math.pow(1 + interest, term);
-        var interestTimesInterestPower = interest * interestPower;
-        var payment = (mortgage * interestTimesInterestPower) /
-          (interestPower - 1);
-
-        $("#result").text(payment.toFixed(2));
-      }
+      var calculator = new MortgageCalculator({
+        homeCost: homeCost,
+        termInMonths: term,
+        interestPerMonth: interest
+      });
+      $("#result").text(calculator.payment().toFixed(2));
       evt.preventDefault();
     });
   }

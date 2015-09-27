@@ -24,7 +24,7 @@ describe('Mortgage Calculator Dialog', () => {
 
     $('#mortgage').submit();
 
-    expect($('#result').text()).toEqual('0');
+    expect($('#result').text()).toEqual('0.00');
   });
 
   it('has the mortgage payment of the home cost when there is only one payment', () => {
@@ -34,7 +34,7 @@ describe('Mortgage Calculator Dialog', () => {
 
     $('#mortgage').submit();
 
-    expect($('#result').text()).toEqual('100000');
+    expect($('#result').text()).toEqual('100000.00');
   });
 
   it('only gets stuff from the form, not just any input', () => {
@@ -44,7 +44,7 @@ describe('Mortgage Calculator Dialog', () => {
 
     $('#mortgage').submit();
 
-    expect($('#result').text()).toEqual('1000');
+    expect($('#result').text()).toEqual('1000.00');
   });
 
   it('respects the term (in years), with 0 for the interest rate', () => {
@@ -54,7 +54,7 @@ describe('Mortgage Calculator Dialog', () => {
 
     $('#mortgage').submit();
 
-    expect($('#result').text()).toEqual('100');
+    expect($('#result').text()).toEqual('100.00');
   });
 
   it('respects the term and the interest rate (monthly)', () => {
