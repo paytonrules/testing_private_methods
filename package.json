@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "browser-sync start --files 'src/**/*.html,src/**/*.css,src/**/*.js' --server 'src'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "testem ci"
   },
   "keywords": [
     "setup",

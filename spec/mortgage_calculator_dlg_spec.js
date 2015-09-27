@@ -1,20 +1,69 @@
-import {Phony} from 'test_object';
+import {MortgageCalculatorDlg} from 'mortgage_calculator_dlg';
 import $ from 'jquery';
-import jf from 'searls/jasmine-fixture';
 
-describe("Mortgage Calculator Dialog", () => {
+describe('Mortgage Calculator Dialog', () => {
   beforeEach(() => {
-    jf.affix('form#mortgage input[name="homeCost"] input[name="interest"] input[name="term"] span#result');
+    $("body").append("<div id='test'>");
+    $("#test").append("<form id='mortgage'>" +
+        "<input name='homeCost' />" +
+        "<input name='interest' />" +
+        "<input name='term' />" +
+      "</form>" +
+      "<span id='result'></span>");
+    MortgageCalculatorDlg.init($("#mortgage"));
   });
 
-  it("updates the mortgage payment to 0 when all the values are 0", () => {
-    $('input[name="mortage-calculator"]').val(0);
+  afterEach(() => {
+    $("#test").remove();
+  });
+
+  it('updates the mortgage payment to 0 when all the values are 0', () => {
     $('input[name="homeCost"]').val(0);
+    $('input[name="interest"]').val(0);
     $('input[name="term"]').val(0);
 
-    $("#mortgage-calculator").submit();
+    $('#mortgage').submit();
 
-    expect($('#span').text()).toEqual("0");
+    expect($('#result').text()).toEqual('0');
+  });
+
+  it('has the mortgage payment of the home cost when there is only one payment', () => {
+    $('input[name="homeCost"]').val(100000);
+    $('input[name="interest"]').val(0);
+    $('input[name="term"]').val(0);
+
+    $('#mortgage').submit();
+
+    expect($('#result').text()).toEqual('100000');
+  });
+
+  it('only gets stuff from the form, not just any input', () => {
+    $("#test").prepend("<input name='homeCost' />");
+    $('input[name="homeCost"]').val(1);
+    $('#mortgage input[name="homeCost"]').val(1000);
+
+    $('#mortgage').submit();
+
+    expect($('#result').text()).toEqual('1000');
+  });
+
+  it('respects the term (in years), with 0 for the interest rate', () => {
+    $('input[name="homeCost"]').val(1200);
+    $('input[name="interest"]').val(0);
+    $('input[name="term"]').val(1);
+
+    $('#mortgage').submit();
+
+    expect($('#result').text()).toEqual('100');
+  });
+
+  it('respects the term and the interest rate (monthly)', () => {
+    $('input[name="homeCost"]').val(100000);
+    $('input[name="interest"]').val(3.92);
+    $('input[name="term"]').val(30);
+
+    $('#mortgage').submit();
+
+    expect($('#result').text()).toEqual('472.81');
   });
 });
-
