@@ -6,6 +6,7 @@ describe('Mortgage Calculator Dialog', () => {
     $("body").append("<div id='test'>");
     $("#test").append("<form id='mortgage'>" +
         "<input name='homeCost' />" +
+        "<input name='downPayment' />" +
         "<input name='interest' />" +
         "<input name='term' />" +
       "</form>" +
@@ -66,4 +67,16 @@ describe('Mortgage Calculator Dialog', () => {
 
     expect($('#result').text()).toEqual('472.81');
   });
+
+  it('respects the down payment', () => {
+    $('input[name="homeCost"]').val(1200);
+    $('input[name="downPayment"]').val(200);
+    $('input[name="interest"]').val(0);
+    $('input[name="term"]').val(0);
+
+    $('#mortgage').submit();
+
+    expect($('#result').text()).toEqual('1000.00');
+  });
+
 });
